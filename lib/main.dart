@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       unknownRoute: Routes.screens.last,
       initialRoute: '/home',
       theme: ThemeData(
-        //backgroundColor: backgroundColorDark,
+        scaffoldBackgroundColor: backgroundColorLight,
         primarySwatch: Colors.blue,
         fontFamily: 'Muli',
       ),

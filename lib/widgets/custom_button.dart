@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class CustomButtom extends StatelessWidget {
   final String? title;
   final VoidCallback? onTap;
-  const CustomButtom({Key? key, this.title, this.onTap}) : super(key: key);
+  const CustomButtom({Key? key, @required this.title, @required this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
