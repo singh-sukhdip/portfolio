@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:portfolio/services/theme_service.dart';
 import 'package:portfolio/utils/routes.dart';
 import 'package:portfolio/utils/styles.dart';
+import 'package:portfolio/utils/themes.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
   runApp(MyApp());
 }
 
@@ -17,11 +22,9 @@ class MyApp extends StatelessWidget {
       getPages: Routes.screens,
       unknownRoute: Routes.screens.last,
       initialRoute: '/home',
-      theme: ThemeData(
-        scaffoldBackgroundColor: backgroundColorLight,
-        primarySwatch: Colors.blue,
-        fontFamily: 'Muli',
-      ),
+      theme: Themes.lightTheme,
+      darkTheme: Themes.darkTheme,
+      themeMode: ThemeService.getThemeMode(),
     );
   }
 }

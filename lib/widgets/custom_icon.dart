@@ -1,10 +1,16 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomIcon extends StatelessWidget {
   final IconData? icon;
   final VoidCallback? onTap;
-  const CustomIcon({Key? key, @required this.icon, @required this.onTap})
+  final Color? color;
+  const CustomIcon(
+      {Key? key,
+      @required this.icon,
+      @required this.onTap,
+      this.color = Colors.black87})
       : super(key: key);
 
   @override
@@ -27,8 +33,8 @@ class CustomIcon extends StatelessWidget {
       child: IconButton(
         iconSize: 25,
         onPressed: onTap,
-        icon: Icon(icon),
-        color: Colors.black87,
+        icon: FaIcon(icon),
+        color: color,
       ),
     );
   }

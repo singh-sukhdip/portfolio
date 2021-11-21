@@ -27,6 +27,8 @@ dependencies:
     sdk: flutter
   get: ^4.3.8
   get_storage: ^2.0.3
+  animated_text_kit: ^4.2.1
+  font_awesome_flutter: any
 
 dev_dependencies:
   flutter_test:
