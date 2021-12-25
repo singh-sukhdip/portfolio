@@ -8,13 +8,16 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-        onPressed: onTap,
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Text(
-            '$title',
-          ),
-        ));
+    return Container(
+      child: ElevatedButton(
+          onPressed: onTap,
+          child: Container(
+            //margin: EdgeInsets.symmetric(vertical: 10),
+            padding: const EdgeInsets.all(10.0),
+            child: Text(
+              '$title',
+            ),
+          )),
+    );
   }
 }

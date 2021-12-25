@@ -6,3 +6,5 @@ const Color backgroundColorLight = Colors.white70;
 Color? greyFontColor = Colors.grey[600];
 Color? pinkLightFontColor = Colors.pink[300];
 Color? pinkDarkFontColor = Colors.pink[400];
+Color? languageSelectedColor = Colors.green;
+Color? languageUnSelectedColor = Colors.grey;

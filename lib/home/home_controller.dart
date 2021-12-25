@@ -1,7 +1,9 @@
-import 'dart:html';
+import 'package:portfolio/home/components/language_options.dart';
+import 'package:portfolio/services/language/lang_model.dart';
+import 'package:portfolio/services/language/language_service.dart';
+import 'package:universal_html/html.dart' as html;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:portfolio/services/theme_service.dart';
 
 class HomeController extends GetxController with SingleGetTickerProviderMixin {
@@ -13,9 +15,8 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
-    final loader = document.getElementById('loader');
+    final loader = html.document.getElementById('loader');
     if (loader != null) loader.remove();
     themeIcon =
         ThemeService.darkModeEnabled() ? Icons.light_mode : Icons.dark_mode;
@@ -30,6 +31,7 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
     tabController!.dispose();
   }
 
+//change theme
   void changeTheme() {
     ThemeService.changeThemeMode();
     themeIcon =
@@ -41,5 +43,31 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
     selectedIndex = index;
     tabController!.animateTo(index);
     update();
+  }
+
+//change langugae
+  void openSettingsDialog() {
+    Get.defaultDialog(
+      title: 'Change Language',
+      titleStyle: TextStyle(fontWeight: FontWeight.w600),
+      content: LanguageOptions(),
+      onCancel: () {
+        LanguageService.to.tempSelectedLanguage.value =
+            LanguageService.to.selectedLanguage.value;
+      },
+      onConfirm: () {
+        LanguageService.to.updateLanguage();
+      },
+      textConfirm: 'Save',
+      confirmTextColor: !Get.isDarkMode ? Colors.white : Colors.black,
+    );
+  }
+
+  Color? langCheckMarkColor(Language lang) {
+    if (lang == LanguageService.to.selectedLanguage.value) {
+      return Colors.green;
+    } else {
+      return Colors.grey;
+    }
   }
 }

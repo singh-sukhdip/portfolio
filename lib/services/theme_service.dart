@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-class ThemeService {
+class ThemeService extends GetxService {
+  Future<ThemeService> init() async {
+    return this;
+  }
+
   static final _storage = GetStorage();
 
   static ThemeMode getThemeMode() {

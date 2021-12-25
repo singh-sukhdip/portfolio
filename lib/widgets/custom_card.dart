@@ -13,13 +13,13 @@ class CustomCard extends StatefulWidget {
 }
 
 class _CustomCardState extends State<CustomCard> {
-  bool isHover = false;
+  //bool isHover = false;
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: Duration(milliseconds: 200),
-      padding: EdgeInsets.only(
-          top: (isHover) ? 25 : 30.0, bottom: !(isHover) ? 25 : 30),
+    return Container(
+      //duration: Duration(milliseconds: 200),
+      margin: EdgeInsets.all(10),
+      padding: EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
         color: Get.isDarkMode
             ? backgroundColorDark
@@ -39,37 +39,30 @@ class _CustomCardState extends State<CustomCard> {
         shape: BoxShape.rectangle,
         //color: backgroundColorLight,
       ),
-      height: 250,
+      height: 260,
       width: 300,
-      child: InkWell(
-        onHover: (val) {
-          setState(() {
-            isHover = val;
-          });
-        },
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.asset(
-              widget.image,
-              fit: BoxFit.cover,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Flexible(
-                fit: FlexFit.loose,
-                child: Text(
-                  widget.text,
-                  style: Theme.of(context)
-                      .textTheme
-                      .subtitle1!
-                      .copyWith(color: greyFontColor),
-                )),
-          ],
-        ),
+      child: Column(
+        //mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Image.asset(
+            widget.image,
+            fit: BoxFit.cover,
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Flexible(
+              fit: FlexFit.loose,
+              child: Text(
+                widget.text,
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle1!
+                    .copyWith(color: greyFontColor),
+              )),
+        ],
       ),
     );
   }

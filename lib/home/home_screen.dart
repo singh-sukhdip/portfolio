@@ -1,293 +1,125 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:portfolio/home/home_controller.dart';
-import 'package:portfolio/utils/styles.dart';
-import 'package:portfolio/widgets/custom_button.dart';
-import 'package:portfolio/widgets/custom_card.dart';
-import 'package:portfolio/widgets/custom_icon.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'dart:js' as js;
+import 'package:get/get.dart';
+import 'package:portfolio/home/components/about_me.dart';
+import 'package:portfolio/home/components/education.dart';
+import 'package:portfolio/home/components/experience.dart';
+import 'package:portfolio/home/components/header_info.dart';
+import 'package:portfolio/home/components/large_heading.dart';
+import 'package:portfolio/home/components/profile_pic_circular.dart';
+import 'package:portfolio/home/components/profile_pic_rectangular.dart';
+import 'package:portfolio/home/components/projects.dart';
+import 'package:portfolio/home/components/side_icons.dart';
+import 'package:portfolio/home/components/skills.dart';
+import 'package:portfolio/home/components/small_heading.dart';
+import 'package:portfolio/home/components/social_icons.dart';
+import 'package:portfolio/home/home_controller.dart';
+import 'package:portfolio/widgets/contact_card.dart';
+import 'package:portfolio/widgets/responsive_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var isMobile = ResponsiveWidget.isMobile(context);
+    var isTablet = ResponsiveWidget.isTablet(context);
+    var isDesktop = ResponsiveWidget.isDesktop(context);
+    //this line is required on every screen to change theme using get
+    ThemeData themeData = Theme.of(context);
     return Scaffold(
       //extendBodyBehindAppBar: true,
 
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        actions: [
-          CustomIcon(
-            icon: Icons.menu_rounded,
-            onTap: () {},
-          ),
-          SizedBox(
-            width: context.width * 0.1,
-          ),
-        ],
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.transparent,
+      //   elevation: 0,
+      //   actions: [
+      //     CustomIcon(
+      //       icon: Icons.menu_rounded,
+      //       onTap: () {},
+      //     ),
+      //     SizedBox(
+      //       width: Get.width * 0.1,
+      //     ),
+      //   ],
+      // ),
       body: SingleChildScrollView(
         //padding: EdgeInsets.symmetric(horizontal: 20.0),
         child: Container(
-          //constraints: BoxConstraints(maxWidth: 1200),
-          padding: EdgeInsets.symmetric(horizontal: context.width * 0.1),
+          constraints: BoxConstraints(minWidth: 600),
+          padding: EdgeInsets.symmetric(
+              horizontal: Get.width * 0.1, vertical: Get.height * 0.07),
           child: Column(children: [
-            const SizedBox(
-              height: 70,
-            ),
+            // const SizedBox(
+            //   height: 70,
+            // ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                Flexible(fit: FlexFit.tight, child: HeaderInfo()),
+                isDesktop ? Spacer() : Container(),
+                isDesktop ? ProfilePicCircular() : Container(),
                 SizedBox(
-                  width: 70,
+                  width: 40,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 50,
-                    ),
-                    Text('Hello',
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline6!
-                            .copyWith(color: greyFontColor)),
-                    // DefaultTextStyle(
-                    //     style: Theme.of(context)
-                    //         .textTheme
-                    //         .headline6!
-                    //         .copyWith(color: greyFontColor),
-                    //     child: AnimatedTextKit(
-                    //       animatedTexts: [FlickerAnimatedText('Hello')],
-                    //     )),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      'I\'m Sukhdip Singh',
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline3!
-                          .copyWith(fontWeight: FontWeight.w900),
-                      // style: const TextStyle(
-                      //     fontSize: 40,
-                      //     fontWeight: FontWeight.w900,
-                      //     color: Colors.black87),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    // Text(
-                    //   'Flutter developer',
-                    //   style: TextStyle(color: Colors.grey[700], fontSize: 25),
-                    // ),
-                    DefaultTextStyle(
-                      style: TextStyle(color: Colors.grey[700], fontSize: 25
-                          //fontFamily: 'Agne',
-                          ),
-                      child: AnimatedTextKit(
-                        repeatForever: true,
-                        animatedTexts: [
-                          TypewriterAnimatedText('Flutter developer',
-                              speed: Duration(milliseconds: 100)),
-                          TypewriterAnimatedText('Backend developer',
-                              speed: Duration(milliseconds: 100)),
-                          //TypewriterAnimatedText('Do not patch bugs out, rewrite them'),
-                          //TypewriterAnimatedText('Do not test bugs out, design them out'),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    CustomButton(
-                      title: 'More About Me',
-                      onTap: () {},
-                    ),
-                  ],
-                ),
-                Spacer(),
-                Container(
-                  decoration: BoxDecoration(
-                    //borderRadius: BorderRadius.circular(20.0),
-                    border: Border.all(
-                        width: 10,
-                        color: Get.isDarkMode
-                            ? Colors.grey[800]!
-                            : Colors.grey[300]!),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Get.isDarkMode
-                              ? Colors.grey[700]!
-                              : Colors.grey[700]!,
-                          offset: const Offset(3.0, 3.0),
-                          blurRadius: 8.0,
-                          spreadRadius: 2.0)
-                    ],
-                    shape: BoxShape.circle,
-                    //color: backgroundColorLight,
-                  ),
-                  height: 300,
-                  width: 300,
-                  child: CircleAvatar(
-                    backgroundColor:
-                        Get.isDarkMode ? Colors.grey[600]! : Colors.grey[200],
-                    backgroundImage: AssetImage('images/profile-pic.png'),
-                  ),
-                ),
-                Spacer(),
-                Column(
-                  children: [
-                    CustomIcon(icon: Icons.settings, onTap: () {}),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    GetBuilder<HomeController>(
-                      //init: MyController(),
-                      //initState: (_) {},
-                      builder: (_) {
-                        return CustomIcon(
-                            icon: HomeController.to.themeIcon,
-                            onTap: () {
-                              HomeController.to.changeTheme();
-                            });
-                      },
-                    ),
-                  ],
-                )
-              ],
-            ),
-            const SizedBox(
-              height: 130,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  'MAIN INFO',
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.pink[300],
-                      fontWeight: FontWeight.w700),
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Text(
-                  'ABOUT ME',
-                  style: TextStyle(
-                      fontSize: 30,
-                      color: Get.isDarkMode ? Colors.white : Colors.black,
-                      fontWeight: FontWeight.bold),
-                )
+                SideIcons()
               ],
             ),
             const SizedBox(
               height: 50,
             ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    //borderRadius: BorderRadius.circular(20.0),
-                    border: Border.all(
-                        width: 10,
-                        color: Get.isDarkMode
-                            ? Colors.grey[800]!
-                            : Colors.grey[300]!),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey[700]!,
-                          offset: const Offset(3.0, 3.0),
-                          blurRadius: 8.0,
-                          spreadRadius: 2.0)
-                    ],
-                    shape: BoxShape.rectangle,
-                    color:
-                        Get.isDarkMode ? Colors.grey[600]! : Colors.grey[200],
-                  ),
-                  height: 300,
-                  width: 300,
-                  child: Image.asset(
-                    'assets/images/profile-pic.png',
-                  ),
-                ),
+                SmallHeading(text: 'main info'),
                 const SizedBox(
-                  width: 30,
+                  height: 15,
                 ),
-                Expanded(
-                  child: Column(
-                    children: [
-                      SelectableText(
-                        'Hi! My name is Sukhdip Singh. I am a flutter developer. I have developed two main apps Elector search and mroznamcha which are available on playstore other than this i have worked on other projects also.',
-                        style: TextStyle(color: Colors.grey, fontSize: 18),
-                      ),
-                      const SizedBox(
-                        height: 40,
-                      ),
-                      Row(
-                        children: [
-                          CustomButton(title: 'Download CV', onTap: () {}),
-                          const SizedBox(
-                            width: 30,
-                          ),
-                          CustomButton(title: 'Hire Me', onTap: () {}),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+                LargeHeading(text: 'about me'),
               ],
             ),
             const SizedBox(
-              height: 30,
+              height: 50,
             ),
-            Row(
-              children: [
-                const SizedBox(
-                  width: 50,
-                ),
-                CustomIcon(
-                  icon: FontAwesomeIcons.linkedinIn,
-                  onTap: () {
-                    js.context.callMethod('open', [
-                      'https://in.linkedin.com/in/sukhdip-singh-1a82797a',
-                    ]);
-                  },
-                  //color: Colors.grey,
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                CustomIcon(
-                  icon: FontAwesomeIcons.github,
-                  onTap: () {
-                    js.context.callMethod('open', [
-                      'https://github.com/singh-sukhdip?tab=repositories',
-                    ]);
-                  },
-                  //color: Colors.grey,
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                CustomIcon(
-                  icon: FontAwesomeIcons.twitter,
-                  onTap: () {
-                    js.context.callMethod('open', [
-                      'https://twitter.com/Sukhdip82635159',
-                    ]);
-                  },
-                  //color: Colors.grey,
-                ),
-              ],
-            ),
+            !isMobile
+                ? Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          ProfilePicRectangular(),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          SocialIcons(),
+                        ],
+                      ),
+                      const SizedBox(
+                        width: 30,
+                      ),
+                      Expanded(
+                        child: AboutMe(),
+                      ),
+                    ],
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ProfilePicRectangular(),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      SocialIcons(),
+                      const SizedBox(
+                        height: 35,
+                      ),
+                      AboutMe(),
+                    ],
+                  ),
+
             const SizedBox(
               height: 40,
             ),
@@ -337,143 +169,70 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(
               height: 50,
             ),
-            Text(
-              'PORTFOLIO',
-              style: Theme.of(context).textTheme.headline6!.copyWith(
-                  color: Colors.pink[300], fontWeight: FontWeight.w600),
-            ),
+            SmallHeading(text: 'portfolio'),
             SizedBox(
               height: 10,
             ),
-            Text(
-              'LATEST WORKS',
-              style: Theme.of(context)
-                  .textTheme
-                  .headline4!
-                  .copyWith(fontWeight: FontWeight.w600),
+            LargeHeading(
+              text: 'Latest works',
             ),
             const SizedBox(
               height: 50,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            Projects(),
+            //),
+            const SizedBox(
+              height: 100,
+            ),
+            SmallHeading(text: 'contact'),
+            SizedBox(
+              height: 10,
+            ),
+            LargeHeading(text: 'get in touch'),
+            const SizedBox(
+              height: 50,
+            ),
+            Wrap(
               children: [
-                CustomCard(
-                  image: 'assets/images/1.png',
-                  text: 'Personal Portfolio',
+                ContactCard(
+                  icon: FontAwesomeIcons.phone,
+                  headline: 'Phone',
+                  description: '+919988345270',
                 ),
-                CustomCard(
-                  image: 'assets/images/2.png',
-                  text: 'Wedding Couple',
+                ContactCard(
+                  icon: FontAwesomeIcons.mailBulk,
+                  headline: 'Email',
+                  description: 'sukhdip4444@gmail.com',
                 ),
-                CustomCard(
-                  image: 'assets/images/3.png',
-                  text: 'Product Landing Page',
+                ContactCard(
+                  icon: FontAwesomeIcons.locationArrow,
+                  headline: 'Address',
+                  description: 'Hoshiarpur, Punjab, India',
                 ),
               ],
             ),
             const SizedBox(
               height: 50,
             ),
+            Container(
+              alignment: Alignment.bottomCenter,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Made with '),
+                  Container(
+                      height: 35,
+                      child: Image.asset(
+                        'images/heart.png',
+                        fit: BoxFit.contain,
+                      )),
+                  Text('  in Flutter'),
+                ],
+              ),
+            ),
           ]),
         ),
       ),
-    );
-  }
-}
-
-class Education extends StatelessWidget {
-  const Education({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Text('education'),
-    );
-  }
-}
-
-class Experience extends StatelessWidget {
-  const Experience({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Text('mRoznamcha app'),
-          Text('Elector Search app'),
-          Text('portfolio website'),
-        ],
-      ),
-    );
-  }
-}
-
-class Skills extends StatelessWidget {
-  const Skills({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          EachSkillRow(
-            skillName: 'Flutter',
-            skillPerCent: 0.8,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class EachSkillRow extends StatelessWidget {
-  final String skillName;
-  final double skillPerCent;
-  const EachSkillRow({
-    Key? key,
-    required this.skillName,
-    required this.skillPerCent,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Text(
-          skillName,
-          style: TextStyle(color: greyFontColor),
-        ),
-        const SizedBox(
-          width: 20,
-        ),
-        Container(
-          width: 300,
-          child: LinearProgressIndicator(
-            color: Get.isDarkMode ? backgroundColorLight : backgroundColorDark,
-            backgroundColor:
-                Get.isDarkMode ? backgroundColorDark : backgroundColorLight,
-            value: skillPerCent,
-          ),
-        ),
-        const SizedBox(
-          width: 20,
-        ),
-        Text('${skillPerCent * 100}%')
-      ],
     );
   }
 }
