@@ -12,6 +12,12 @@ class LanguageService extends GetxService {
   late String langCode, langCountry;
   List<Language> languages = [];
 
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    super.onClose();
+  }
+
   Future<LanguageService> init() async {
     languages.add(
       Language(

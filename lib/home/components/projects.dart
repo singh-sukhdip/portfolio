@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/widgets/custom_card.dart';
 import 'package:portfolio/widgets/on_hover_effect.dart';
+import 'dart:js' as js;
 
 class Projects extends StatelessWidget {
   const Projects({
@@ -23,34 +24,44 @@ class Projects extends StatelessWidget {
             )
             ..scale(1.02),
           child: CustomCard(
-            image: 'assets/images/1.png',
+            onPress: () {
+              js.context.callMethod('open', [
+                'https://play.google.com/store/apps/details?id=nic.hp.erms',
+              ]);
+            },
+            image: 'assets/images/elector_search.png',
+            text: 'Elector Search Himachal',
+          ),
+        ),
+        OnHoverEffect(
+          transform: Matrix4.identity()
+            ..translate(
+              0,
+              -8,
+              0,
+            )
+            ..scale(1.02),
+          child: CustomCard(
+            onPress: () {
+              js.context.callMethod('open', [
+                'https://play.google.com/store/apps/details?id=nic.hp.mroznamcha',
+              ]);
+            },
+            image: 'assets/images/mroznamcha.png',
+            text: 'mRoznamcha mobile app',
+          ),
+        ),
+        OnHoverEffect(
+          transform: Matrix4.identity()
+            ..translate(
+              0,
+              -8,
+              0,
+            )
+            ..scale(1.02),
+          child: CustomCard(
+            image: 'assets/images/profile_pic.jpeg',
             text: 'Personal Portfolio',
-          ),
-        ),
-        OnHoverEffect(
-          transform: Matrix4.identity()
-            ..translate(
-              0,
-              -8,
-              0,
-            )
-            ..scale(1.02),
-          child: CustomCard(
-            image: 'assets/images/2.png',
-            text: 'Wedding Couple',
-          ),
-        ),
-        OnHoverEffect(
-          transform: Matrix4.identity()
-            ..translate(
-              0,
-              -8,
-              0,
-            )
-            ..scale(1.02),
-          child: CustomCard(
-            image: 'assets/images/3.png',
-            text: 'Product Landing Page',
           ),
         ),
       ],

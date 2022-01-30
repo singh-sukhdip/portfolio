@@ -11,7 +11,7 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
 
   IconData? themeIcon;
   TabController? tabController;
-  int selectedIndex = 0;
+  int selectedIndex = 1;
 
   @override
   void onInit() {
@@ -69,5 +69,11 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
     } else {
       return Colors.grey;
     }
+  }
+
+  downloadResume(url) {
+    html.AnchorElement anchorElement = html.AnchorElement(href: url);
+    anchorElement.download = 'Sukhdip_Singh_Resume';
+    anchorElement.click();
   }
 }

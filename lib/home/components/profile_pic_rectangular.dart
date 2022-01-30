@@ -27,7 +27,8 @@ class ProfilePicRectangular extends StatelessWidget {
       height: 300,
       width: 300,
       child: Image.asset(
-        'assets/images/profile-pic.png',
+        'images/profile_pic.jpeg',
+        fit: BoxFit.cover,
       ),
     );
   }

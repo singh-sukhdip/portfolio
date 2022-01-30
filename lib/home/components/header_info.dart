@@ -33,7 +33,7 @@ class HeaderInfo extends StatelessWidget {
           height: 5,
         ),
         Text(
-          'I\'m Sukhdip Singh',
+          'name'.tr,
           style: Theme.of(context)
               .textTheme
               .headline3!
@@ -60,9 +60,9 @@ class HeaderInfo extends StatelessWidget {
             child: AnimatedTextKit(
               repeatForever: true,
               animatedTexts: [
-                TypewriterAnimatedText('Flutter developer',
+                TypewriterAnimatedText('developer_1'.tr,
                     speed: Duration(milliseconds: 100)),
-                TypewriterAnimatedText('Backend developer',
+                TypewriterAnimatedText('developer_2'.tr,
                     speed: Duration(milliseconds: 100)),
                 //TypewriterAnimatedText('Do not patch bugs out, rewrite them'),
                 //TypewriterAnimatedText('Do not test bugs out, design them out'),

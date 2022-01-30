@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/home/home_controller.dart';
 import 'package:portfolio/widgets/custom_button.dart';
+import 'package:get/get.dart';
 
 class AboutMe extends StatelessWidget {
   const AboutMe({
@@ -12,7 +14,7 @@ class AboutMe extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SelectableText(
-          'Hi! My name is Sukhdip Singh. I am a flutter developer. I have developed two main apps Elector search and mroznamcha which are available on playstore other than this i have worked on other projects also.',
+          'about_me_details'.tr,
           style: TextStyle(color: Colors.grey, fontSize: 18),
         ),
         const SizedBox(
@@ -22,12 +24,17 @@ class AboutMe extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: 10.0),
-              child: CustomButton(title: 'Download CV', onTap: () {}),
+              child: CustomButton(
+                  title: 'download_CV'.tr,
+                  onTap: () {
+                    HomeController.to.downloadResume(
+                        'assets/files/Sukhdip_Singh_Resume.pdf');
+                  }),
             ),
             const SizedBox(
               width: 30,
             ),
-            CustomButton(title: 'Hire Me', onTap: () {}),
+            //CustomButton(title: 'Hire Me', onTap: () {}),
           ],
         ),
       ],

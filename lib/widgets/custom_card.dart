@@ -5,7 +5,8 @@ import 'package:portfolio/utils/styles.dart';
 class CustomCard extends StatefulWidget {
   final String image;
   final String text;
-  const CustomCard({Key? key, this.image = '', this.text = ''})
+  final Function()? onPress;
+  const CustomCard({Key? key, this.image = '', this.text = '', this.onPress})
       : super(key: key);
 
   @override
@@ -41,28 +42,33 @@ class _CustomCardState extends State<CustomCard> {
       ),
       height: 260,
       width: 300,
-      child: Column(
-        //mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Image.asset(
-            widget.image,
-            fit: BoxFit.cover,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Flexible(
-              fit: FlexFit.loose,
-              child: Text(
-                widget.text,
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle1!
-                    .copyWith(color: greyFontColor),
-              )),
-        ],
+      child: GestureDetector(
+        onTap: widget.onPress,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image.asset(
+              widget.image,
+              fit: BoxFit.contain,
+              height: 200,
+              width: 300,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Flexible(
+                fit: FlexFit.loose,
+                child: Text(
+                  widget.text,
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle1!
+                      .copyWith(color: greyFontColor),
+                )),
+          ],
+        ),
       ),
     );
   }

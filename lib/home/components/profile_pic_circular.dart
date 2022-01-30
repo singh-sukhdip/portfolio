@@ -28,7 +28,7 @@ class ProfilePicCircular extends StatelessWidget {
       width: 300,
       child: CircleAvatar(
         backgroundColor: Get.isDarkMode ? Colors.grey[600]! : Colors.grey[200],
-        backgroundImage: AssetImage('images/profile-pic.png'),
+        backgroundImage: AssetImage('images/profile_pic.jpeg'),
       ),
     );
   }

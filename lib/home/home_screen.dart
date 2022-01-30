@@ -67,16 +67,16 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(
-              height: 50,
+              height: 70,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SmallHeading(text: 'main info'),
+                SmallHeading(text: 'main info'.tr),
                 const SizedBox(
                   height: 15,
                 ),
-                LargeHeading(text: 'about me'),
+                LargeHeading(text: 'about me'.tr),
               ],
             ),
             const SizedBox(
@@ -97,7 +97,7 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(
-                        width: 30,
+                        width: 70,
                       ),
                       Expanded(
                         child: AboutMe(),
@@ -114,7 +114,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       SocialIcons(),
                       const SizedBox(
-                        height: 35,
+                        height: 40,
                       ),
                       AboutMe(),
                     ],
@@ -130,9 +130,9 @@ class HomeScreen extends StatelessWidget {
                 //indicatorSize: TabBarIndicatorSize.tab,
                 indicatorColor: Colors.transparent,
                 tabs: [
-                  Tab(child: Text('Skills')),
-                  Tab(child: Text('Experience')),
-                  Tab(child: Text('Education')),
+                  Tab(child: Text('Skills'.tr)),
+                  Tab(child: Text('Experience'.tr)),
+                  Tab(child: Text('Education'.tr)),
                 ],
                 controller: HomeController.to.tabController,
                 onTap: (int index) {
@@ -169,12 +169,12 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(
               height: 50,
             ),
-            SmallHeading(text: 'portfolio'),
+            SmallHeading(text: 'portfolio'.tr),
             SizedBox(
               height: 10,
             ),
             LargeHeading(
-              text: 'Latest works',
+              text: 'Latest works'.tr,
             ),
             const SizedBox(
               height: 50,
@@ -184,11 +184,11 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(
               height: 100,
             ),
-            SmallHeading(text: 'contact'),
+            SmallHeading(text: 'contact'.tr),
             SizedBox(
               height: 10,
             ),
-            LargeHeading(text: 'get in touch'),
+            LargeHeading(text: 'get in touch'.tr),
             const SizedBox(
               height: 50,
             ),
@@ -196,18 +196,18 @@ class HomeScreen extends StatelessWidget {
               children: [
                 ContactCard(
                   icon: FontAwesomeIcons.phone,
-                  headline: 'Phone',
+                  headline: 'Phone'.tr,
                   description: '+919988345270',
                 ),
                 ContactCard(
                   icon: FontAwesomeIcons.mailBulk,
-                  headline: 'Email',
+                  headline: 'Email'.tr,
                   description: 'sukhdip4444@gmail.com',
                 ),
                 ContactCard(
                   icon: FontAwesomeIcons.locationArrow,
-                  headline: 'Address',
-                  description: 'Hoshiarpur, Punjab, India',
+                  headline: 'Address'.tr,
+                  description: 'Mandi, Himachal Pradesh, India',
                 ),
               ],
             ),
@@ -219,9 +219,9 @@ class HomeScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Made with '),
+                  Text('Made with '.tr),
                   Container(
-                      height: 35,
+                      height: 26,
                       child: Image.asset(
                         'images/heart.png',
                         fit: BoxFit.contain,

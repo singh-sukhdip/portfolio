@@ -21,11 +21,19 @@ class Skills extends StatelessWidget {
           ),
           EachSkillRow(
             skillName: 'Blockchain',
-            skillPerCent: 0.1,
+            skillPerCent: 0.2,
           ),
           EachSkillRow(
-            skillName: 'Database',
-            skillPerCent: 0.5,
+            skillName: 'Databases',
+            skillPerCent: 0.6,
+          ),
+          EachSkillRow(
+            skillName: 'Data Structures & Algorithms',
+            skillPerCent: 0.6,
+          ),
+          EachSkillRow(
+            skillName: 'UI Implementation',
+            skillPerCent: 0.8,
           ),
         ],
       ),
